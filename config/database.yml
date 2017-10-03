@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  host: db
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password:
+
+development:
+  <<: *default
+  database: teccrate_dev
+
+test:
+  <<: *default
+  database: teccrate_test
+
+production:
+  <<: *default
+  database: teccrate_prod
+  host:
+  username: teccrate
+  password: <%= ENV['TECCRATE_DATABASE_PASSWORD'] %>
